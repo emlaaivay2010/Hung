@@ -1,0 +1,88 @@
+-- 💗 LINH HUB 💗
+
+local player = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui")
+gui.Parent = player.PlayerGui
+gui.Name = "LINHHUB"
+
+-- MAIN
+local main = Instance.new("Frame", gui)
+main.Size = UDim2.new(0,420,0,260)
+main.Position = UDim2.new(0.5,-210,0.5,-130)
+main.BackgroundColor3 = Color3.fromRGB(255,105,180)
+main.Active = true
+main.Draggable = true
+
+-- TITLE
+local title = Instance.new("TextLabel", main)
+title.Size = UDim2.new(1,0,0,40)
+title.Text = "💗 LINH HUB 💗"
+title.BackgroundTransparency = 1
+title.TextScaled = true
+title.TextColor3 = Color3.fromRGB(255,255,255)
+
+-- TAB BUTTONS
+local combat = Instance.new("TextButton", main)
+combat.Size = UDim2.new(0,90,0,35)
+combat.Position = UDim2.new(0.02,0,0.2,0)
+combat.Text = "Combat"
+
+local tech = Instance.new("TextButton", main)
+tech.Size = UDim2.new(0,90,0,35)
+tech.Position = UDim2.new(0.26,0,0.2,0)
+tech.Text = "Tech"
+
+local playerTab = Instance.new("TextButton", main)
+playerTab.Size = UDim2.new(0,90,0,35)
+playerTab.Position = UDim2.new(0.5,0,0.2,0)
+playerTab.Text = "Player"
+
+local misc = Instance.new("TextButton", main)
+misc.Size = UDim2.new(0,90,0,35)
+misc.Position = UDim2.new(0.74,0,0.2,0)
+misc.Text = "Misc"
+
+-- COMBAT BUTTON
+local m1 = Instance.new("TextButton", main)
+m1.Size = UDim2.new(0,180,0,40)
+m1.Position = UDim2.new(0.05,0,0.45,0)
+m1.Text = "M1 Reset"
+
+m1.MouseButton1Click:Connect(function()
+player.Character:BreakJoints()
+end)
+
+-- SPEED BUTTON
+local speed = Instance.new("TextButton", main)
+speed.Size = UDim2.new(0,180,0,40)
+speed.Position = UDim2.new(0.52,0,0.45,0)
+speed.Text = "Speed"
+
+speed.MouseButton1Click:Connect(function()
+player.Character.Humanoid.WalkSpeed = 50
+end)
+
+-- JUMP BUTTON
+local jump = Instance.new("TextButton", main)
+jump.Size = UDim2.new(0,180,0,40)
+jump.Position = UDim2.new(0.05,0,0.65,0)
+jump.Text = "Jump"
+
+jump.MouseButton1Click:Connect(function()
+player.Character.Humanoid.JumpPower = 100
+end)
+
+-- ESP
+local esp = Instance.new("TextButton", main)
+esp.Size = UDim2.new(0,180,0,40)
+esp.Position = UDim2.new(0.52,0,0.65,0)
+esp.Text = "ESP Player"
+
+esp.MouseButton1Click:Connect(function()
+for i,v in pairs(game.Players:GetPlayers()) do
+if v ~= player and v.Character then
+local h = Instance.new("Highlight")
+h.Parent = v.Character
+end
+end
+end)
