@@ -1,0 +1,148 @@
+-- Linh Hub UI Example
+-- Key: linhdepgai
+
+local player = game.Players.LocalPlayer
+local TweenService = game:GetService("TweenService")
+local UIS = game:GetService("UserInputService")
+
+local KEY = "linhdepgai"
+
+-- GUI
+local gui = Instance.new("ScreenGui")
+gui.Parent = player:WaitForChild("PlayerGui")
+gui.ResetOnSpawn = false
+gui.Name = "LinhHub"
+
+-- MAIN FRAME
+local main = Instance.new("Frame")
+main.Parent = gui
+main.Size = UDim2.new(0,0,0,0)
+main.Position = UDim2.new(0.5,-200,0.5,-150)
+main.BackgroundColor3 = Color3.fromRGB(20,20,20)
+
+Instance.new("UICorner",main).CornerRadius = UDim.new(0,12)
+
+TweenService:Create(
+	main,
+	TweenInfo.new(0.4),
+	{Size = UDim2.new(0,400,0,300)}
+):Play()
+
+-- TITLE
+local title = Instance.new("TextLabel")
+title.Parent = main
+title.Size = UDim2.new(1,0,0,40)
+title.Text = "Linh Hub"
+title.BackgroundTransparency = 1
+title.TextColor3 = Color3.new(1,1,1)
+title.Font = Enum.Font.GothamBold
+title.TextSize = 22
+
+-- KEY BOX
+local keyBox = Instance.new("TextBox")
+keyBox.Parent = main
+keyBox.Size = UDim2.new(0.7,0,0,35)
+keyBox.Position = UDim2.new(0.15,0,0.4,0)
+keyBox.PlaceholderText = "Enter Key"
+
+Instance.new("UICorner",keyBox)
+
+-- BUTTON
+local unlock = Instance.new("TextButton")
+unlock.Parent = main
+unlock.Size = UDim2.new(0.7,0,0,35)
+unlock.Position = UDim2.new(0.15,0,0.6,0)
+unlock.Text = "Unlock"
+
+Instance.new("UICorner",unlock)
+
+unlock.MouseButton1Click:Connect(function()
+
+	if keyBox.Text == KEY then
+
+		main:ClearAllChildren()
+
+		-- SIDEBAR
+		local sidebar = Instance.new("Frame")
+		sidebar.Parent = main
+		sidebar.Size = UDim2.new(0,120,1,0)
+		sidebar.BackgroundColor3 = Color3.fromRGB(25,25,25)
+
+		-- CONTENT
+		local content = Instance.new("Frame")
+		content.Parent = main
+		content.Size = UDim2.new(1,-120,1,0)
+		content.Position = UDim2.new(0,120,0,0)
+		content.BackgroundTransparency = 1
+
+		-- PLAYER TAB BUTTON
+		local playerTab = Instance.new("TextButton")
+		playerTab.Parent = sidebar
+		playerTab.Size = UDim2.new(1,0,0,40)
+		playerTab.Text = "Player"
+
+		-- SETTINGS TAB
+		local settingsTab = Instance.new("TextButton")
+		settingsTab.Parent = sidebar
+		settingsTab.Size = UDim2.new(1,0,0,40)
+		settingsTab.Position = UDim2.new(0,0,0,40)
+		settingsTab.Text = "Settings"
+
+		-- PLAYER PAGE
+		local playerPage = Instance.new("Frame")
+		playerPage.Parent = content
+		playerPage.Size = UDim2.new(1,0,1,0)
+		playerPage.BackgroundTransparency = 1
+
+		-- SPEED BUTTON
+		local speed = Instance.new("TextButton")
+		speed.Parent = playerPage
+		speed.Size = UDim2.new(0.6,0,0,40)
+		speed.Position = UDim2.new(0.2,0,0.2,0)
+		speed.Text = "Toggle Speed"
+
+		local speedOn = false
+
+		speed.MouseButton1Click:Connect(function()
+
+			local char = player.Character
+			if char and char:FindFirstChild("Humanoid") then
+
+				local hum = char.Humanoid
+
+				if speedOn then
+					hum.WalkSpeed = 16
+					speedOn = false
+				else
+					hum.WalkSpeed = 40
+					speedOn = true
+				end
+
+			end
+
+		end)
+
+		-- RESET BUTTON
+		local reset = Instance.new("TextButton")
+		reset.Parent = playerPage
+		reset.Size = UDim2.new(0.6,0,0,40)
+		reset.Position = UDim2.new(0.2,0,0.4,0)
+		reset.Text = "Reset Character"
+
+		reset.MouseButton1Click:Connect(function()
+
+			local char = player.Character
+			if char and char:FindFirstChild("Humanoid") then
+				char.Humanoid.Health = 0
+			end
+
+		end)
+
+	else
+
+		keyBox.Text = ""
+		keyBox.PlaceholderText = "Wrong Key"
+
+	end
+
+end)
