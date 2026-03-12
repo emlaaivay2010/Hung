@@ -1,0 +1,117 @@
+-- linh hub v4
+
+local plr = game.Players.LocalPlayer
+local mouse = plr:GetMouse()
+
+local gui = Instance.new("ScreenGui", plr.PlayerGui)
+gui.Name = "linh"
+
+local frame = Instance.new("Frame", gui)
+frame.Size = UDim2.new(0,300,0,280)
+frame.Position = UDim2.new(0.4,0,0.3,0)
+frame.BackgroundColor3 = Color3.fromRGB(25,25,25)
+frame.Active = true
+frame.Draggable = true
+
+local title = Instance.new("TextLabel", frame)
+title.Size = UDim2.new(1,0,0,35)
+title.Text = "linh hub v4"
+title.BackgroundColor3 = Color3.fromRGB(40,40,40)
+title.TextColor3 = Color3.new(1,1,1)
+
+-- Aim gần nhất
+local aim = Instance.new("TextButton", frame)
+aim.Size = UDim2.new(0,240,0,35)
+aim.Position = UDim2.new(0,30,0,50)
+aim.Text = "Aim Nearest"
+
+aim.MouseButton1Click:Connect(function()
+
+local target
+local dist = math.huge
+
+for _,v in pairs(game.Players:GetPlayers()) do
+if v ~= plr and v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
+
+local d = (plr.Character.HumanoidRootPart.Position - v.Character.HumanoidRootPart.Position).Magnitude
+
+if d < dist then
+dist = d
+target = v
+end
+
+end
+end
+
+if target then
+plr.Character.HumanoidRootPart.CFrame = target.Character.HumanoidRootPart.CFrame
+end
+
+end)
+
+-- Teleport sau lưng
+local tp = Instance.new("TextButton", frame)
+tp.Size = UDim2.new(0,240,0,35)
+tp.Position = UDim2.new(0,30,0,95)
+tp.Text = "Teleport Behind"
+
+tp.MouseButton1Click:Connect(function()
+
+for _,v in pairs(game.Players:GetPlayers()) do
+
+if v ~= plr and v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
+
+plr.Character.HumanoidRootPart.CFrame =
+v.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
+
+break
+end
+
+end
+
+end)
+
+-- Reset M1
+local m1 = Instance.new("TextButton", frame)
+m1.Size = UDim2.new(0,240,0,35)
+m1.Position = UDim2.new(0,30,0,140)
+m1.Text = "Reset M1"
+
+m1.MouseButton1Click:Connect(function()
+
+plr.Character.Humanoid:ChangeState(11)
+
+end)
+
+-- Speed
+local speed = Instance.new("TextButton", frame)
+speed.Size = UDim2.new(0,240,0,35)
+speed.Position = UDim2.new(0,30,0,185)
+speed.Text = "Speed 50"
+
+speed.MouseButton1Click:Connect(function()
+
+plr.Character.Humanoid.WalkSpeed = 50
+
+end)
+
+-- ESP Player
+local esp = Instance.new("TextButton", frame)
+esp.Size = UDim2.new(0,240,0,35)
+esp.Position = UDim2.new(0,30,0,230)
+esp.Text = "ESP Player"
+
+esp.MouseButton1Click:Connect(function()
+
+for _,v in pairs(game.Players:GetPlayers()) do
+
+if v ~= plr and v.Character then
+
+local h = Instance.new("Highlight")
+h.Parent = v.Character
+
+end
+
+end
+
+end)
