@@ -1,0 +1,147 @@
+-- VOICE OPEN HUB
+local sound = Instance.new("Sound")
+sound.Parent = game.SoundService
+sound.SoundId = "rbxassetid://9118823100"
+sound.Volume = 2
+sound:Play()
+
+local player = game.Players.LocalPlayer
+local TweenService = game:GetService("TweenService")
+local UIS = game:GetService("UserInputService")
+
+-- GUI
+local gui = Instance.new("ScreenGui",player.PlayerGui)
+gui.Name = "LinhHub"
+
+local main = Instance.new("Frame",gui)
+main.Size = UDim2.new(0,0,0,0)
+main.Position = UDim2.new(0.35,0,0.3,0)
+main.BackgroundColor3 = Color3.fromRGB(255,120,180)
+
+Instance.new("UICorner",main)
+
+-- OPEN ANIMATION
+TweenService:Create(
+main,
+TweenInfo.new(0.4),
+{Size = UDim2.new(0,500,0,380)}
+):Play()
+
+-- TITLE
+local title = Instance.new("TextLabel",main)
+title.Size = UDim2.new(1,0,0,40)
+title.Text = "💗 LINH HUB V2 💗"
+title.TextScaled = true
+title.BackgroundTransparency = 1
+title.TextColor3 = Color3.new(1,1,1)
+
+-- CLICK SOUND
+local function click()
+local s = Instance.new("Sound")
+s.Parent = game.SoundService
+s.SoundId = "rbxassetid://6026984224"
+s.Volume = 1
+s:Play()
+end
+
+-- BUTTON FUNCTION
+local function btn(text,pos,func)
+
+local b = Instance.new("TextButton",main)
+b.Size = UDim2.new(0,200,0,32)
+b.Position = pos
+b.Text = text
+b.BackgroundColor3 = Color3.fromRGB(255,170,210)
+b.TextColor3 = Color3.new(1,1,1)
+
+Instance.new("UICorner",b)
+
+b.MouseButton1Click:Connect(function()
+click()
+func()
+end)
+
+end
+
+-- PLAYER UTIL
+btn("Reset Character",UDim2.new(0.05,0,0.2,0),function()
+player.Character:BreakJoints()
+end)
+
+btn("Jump Test",UDim2.new(0.05,0,0.32,0),function()
+player.Character.Humanoid.Jump = true
+end)
+
+btn("Camera Zoom",UDim2.new(0.05,0,0.44,0),function()
+player.CameraMaxZoomDistance = 50
+end)
+
+-- EMOTES
+btn("Wave",UDim2.new(0.55,0,0.2,0),function()
+player.Character.Humanoid.Jump = true
+end)
+
+btn("Cheer",UDim2.new(0.55,0,0.32,0),function()
+for i=1,2 do
+player.Character.Humanoid.Jump = true
+task.wait(0.3)
+end
+end)
+
+btn("Dance",UDim2.new(0.55,0,0.44,0),function()
+for i=1,6 do
+player.Character.Humanoid.Jump = true
+task.wait(0.35)
+end
+end)
+
+btn("Spin",UDim2.new(0.55,0,0.56,0),function()
+for i=1,20 do
+player.Character.HumanoidRootPart.CFrame =
+player.Character.HumanoidRootPart.CFrame *
+CFrame.Angles(0,math.rad(20),0)
+task.wait()
+end
+end)
+
+-- HUB CONTROL
+btn("Hide / Show Hub",UDim2.new(0.3,0,0.72,0),function()
+main.Visible = not main.Visible
+end)
+
+btn("Close Hub",UDim2.new(0.3,0,0.84,0),function()
+gui:Destroy()
+end)
+
+-- DRAG GUI
+local dragging
+local dragInput
+local dragStart
+local startPos
+
+main.InputBegan:Connect(function(input)
+if input.UserInputType == Enum.UserInputType.MouseButton1 then
+dragging = true
+dragStart = input.Position
+startPos = main.Position
+end
+end)
+
+main.InputChanged:Connect(function(input)
+if input.UserInputType == Enum.UserInputType.MouseMovement then
+dragInput = input
+end
+end)
+
+UIS.InputChanged:Connect(function(input)
+if input == dragInput and dragging then
+local delta = input.Position - dragStart
+
+main.Position = UDim2.new(
+startPos.X.Scale,
+startPos.X.Offset + delta.X,
+startPos.Y.Scale,
+startPos.Y.Offset + delta.Y
+)
+end
+end)
