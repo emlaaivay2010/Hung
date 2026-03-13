@@ -1,0 +1,110 @@
+-- Hungandlinh Hub V5 UI
+
+local player = game.Players.LocalPlayer
+
+-- GUI
+local gui = Instance.new("ScreenGui")
+gui.Name = "HungandlinhHub"
+gui.ResetOnSpawn = false
+gui.Parent = player:WaitForChild("PlayerGui")
+
+-- OPEN BUTTON
+local open = Instance.new("TextButton")
+open.Parent = gui
+open.Size = UDim2.new(0,65,0,65)
+open.Position = UDim2.new(0,20,1,-90)
+open.Text = "H"
+open.TextScaled = true
+open.BackgroundColor3 = Color3.fromRGB(255,90,160)
+open.BorderSizePixel = 0
+
+-- MAIN HUB
+local main = Instance.new("Frame")
+main.Parent = gui
+main.Size = UDim2.new(0,820,0,480)
+main.Position = UDim2.new(0.2,0,0.15,0)
+main.BackgroundColor3 = Color3.fromRGB(255,120,170)
+main.Visible = false
+main.Active = true
+main.Draggable = true
+main.BorderSizePixel = 0
+
+open.MouseButton1Click:Connect(function()
+main.Visible = not main.Visible
+end)
+
+-- TITLE
+local title = Instance.new("TextLabel")
+title.Parent = main
+title.Size = UDim2.new(1,0,0,50)
+title.Text = "Hungandlinh Hub"
+title.TextScaled = true
+title.TextColor3 = Color3.new(1,1,1)
+title.BackgroundTransparency = 1
+
+-- CLOSE BUTTON
+local close = Instance.new("TextButton")
+close.Parent = main
+close.Size = UDim2.new(0,45,0,45)
+close.Position = UDim2.new(1,-50,0,5)
+close.Text = "X"
+close.TextScaled = true
+
+close.MouseButton1Click:Connect(function()
+main.Visible = false
+end)
+
+-- MENU
+local menu = Instance.new("Frame")
+menu.Parent = main
+menu.Size = UDim2.new(0,220,1,-50)
+menu.Position = UDim2.new(0,0,0,50)
+menu.BackgroundColor3 = Color3.fromRGB(255,80,140)
+
+-- CONTENT
+local content = Instance.new("Frame")
+content.Parent = main
+content.Size = UDim2.new(1,-220,1,-50)
+content.Position = UDim2.new(0,220,0,50)
+content.BackgroundColor3 = Color3.fromRGB(255,150,190)
+
+-- TAB FUNCTION
+local function createTab(name,pos)
+
+local button = Instance.new("TextButton")
+button.Parent = menu
+button.Size = UDim2.new(1,0,0,45)
+button.Position = UDim2.new(0,0,0,pos)
+button.Text = name
+button.TextScaled = true
+
+button.MouseButton1Click:Connect(function()
+
+for _,v in pairs(content:GetChildren()) do
+v:Destroy()
+end
+
+for i = 1,18 do
+local func = Instance.new("TextButton")
+func.Parent = content
+func.Size = UDim2.new(0,320,0,40)
+func.Position = UDim2.new(0,25,0,(i-1)*45)
+func.Text = name.." Option "..i
+func.TextScaled = true
+end
+
+end)
+
+end
+
+-- TABS
+createTab("Farm",0)
+createTab("Combat",45)
+createTab("Teleport",90)
+createTab("Fruits",135)
+createTab("Player",180)
+createTab("Settings",225)
+createTab("Theme",270)
+createTab("Stats",315)
+createTab("About",360)
+createTab("Credits",405)
