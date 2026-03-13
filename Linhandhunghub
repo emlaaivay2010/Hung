@@ -1,0 +1,81 @@
+-- Hungandlinh Hub | Blox Fruits
+
+local player = game.Players.LocalPlayer
+
+local gui = Instance.new("ScreenGui")
+gui.Parent = player.PlayerGui
+gui.Name = "HungandlinhHub"
+
+local frame = Instance.new("Frame")
+frame.Parent = gui
+frame.Size = UDim2.new(0,500,0,350)
+frame.Position = UDim2.new(0.3,0,0.2,0)
+frame.BackgroundColor3 = Color3.fromRGB(255,105,180)
+
+local title = Instance.new("TextLabel")
+title.Parent = frame
+title.Size = UDim2.new(1,0,0,40)
+title.Text = "Hungandlinh Hub | Blox Fruits"
+title.TextScaled = true
+title.BackgroundTransparency = 1
+title.TextColor3 = Color3.fromRGB(255,255,255)
+
+-- Function tạo nút
+function button(name,pos,callback)
+local b = Instance.new("TextButton")
+b.Parent = frame
+b.Size = UDim2.new(0,200,0,40)
+b.Position = pos
+b.Text = name
+b.MouseButton1Click:Connect(callback)
+end
+
+-- Auto Farm
+button("Auto Farm Level",UDim2.new(0,20,0,60),function()
+print("Auto Farm ON")
+end)
+
+-- Auto Chest
+button("Auto Chest",UDim2.new(0,260,0,60),function()
+print("Auto Chest ON")
+end)
+
+-- Auto Boss
+button("Auto Boss",UDim2.new(0,20,0,110),function()
+print("Auto Boss ON")
+end)
+
+-- Auto Raid
+button("Auto Raid",UDim2.new(0,260,0,110),function()
+print("Auto Raid ON")
+end)
+
+-- Auto Sea Beast
+button("Auto Sea Beast",UDim2.new(0,20,0,160),function()
+print("Sea Beast ON")
+end)
+
+-- ESP Fruit
+button("ESP Devil Fruit",UDim2.new(0,260,0,160),function()
+print("ESP Fruit ON")
+end)
+
+-- Teleport Island
+button("Teleport Island",UDim2.new(0,20,0,210),function()
+print("Teleporting...")
+end)
+
+-- Bring Mob
+button("Bring Mob",UDim2.new(0,260,0,210),function()
+print("Bring Mob ON")
+end)
+
+-- Kill Aura
+button("Kill Aura",UDim2.new(0,20,0,260),function()
+print("Kill Aura ON")
+end)
+
+-- Aim Skill
+button("Aim Skill",UDim2.new(0,260,0,260),function()
+print("Aim Skill ON")
+end)
