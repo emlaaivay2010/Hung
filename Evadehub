@@ -1,0 +1,82 @@
+-- EVade Hub
+
+local player = game.Players.LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
+
+-- GUI
+local gui = Instance.new("ScreenGui", player.PlayerGui)
+
+local frame = Instance.new("Frame", gui)
+frame.Size = UDim2.new(0,200,0,180)
+frame.Position = UDim2.new(0.1,0,0.3,0)
+frame.BackgroundColor3 = Color3.fromRGB(40,40,40)
+frame.Active = true
+frame.Draggable = true
+
+local title = Instance.new("TextLabel", frame)
+title.Size = UDim2.new(1,0,0,30)
+title.Text = "HUNG EVADE HUB"
+title.BackgroundColor3 = Color3.fromRGB(60,60,60)
+title.TextColor3 = Color3.new(1,1,1)
+
+-- Gravity Button
+local gravityBtn = Instance.new("TextButton", frame)
+gravityBtn.Size = UDim2.new(1,0,0,30)
+gravityBtn.Position = UDim2.new(0,0,0,40)
+gravityBtn.Text = "Gravity OFF"
+
+local gravity = false
+
+gravityBtn.MouseButton1Click:Connect(function()
+	if gravity == false then
+		workspace.Gravity = 60
+		gravityBtn.Text = "Gravity ON"
+		gravity = true
+	else
+		workspace.Gravity = 196.2
+		gravityBtn.Text = "Gravity OFF"
+		gravity = false
+	end
+end)
+
+-- Speed Button
+local speedBtn = Instance.new("TextButton", frame)
+speedBtn.Size = UDim2.new(1,0,0,30)
+speedBtn.Position = UDim2.new(0,0,0,80)
+speedBtn.Text = "Speed OFF"
+
+local speed = false
+
+speedBtn.MouseButton1Click:Connect(function()
+	local hum = char:FindFirstChildOfClass("Humanoid")
+	if speed == false then
+		hum.WalkSpeed = 50
+		speedBtn.Text = "Speed ON"
+		speed = true
+	else
+		hum.WalkSpeed = 16
+		speedBtn.Text = "Speed OFF"
+		speed = false
+	end
+end)
+
+-- Jump Button
+local jumpBtn = Instance.new("TextButton", frame)
+jumpBtn.Size = UDim2.new(1,0,0,30)
+jumpBtn.Position = UDim2.new(0,0,0,120)
+jumpBtn.Text = "Jump OFF"
+
+local jump = false
+
+jumpBtn.MouseButton1Click:Connect(function()
+	local hum = char:FindFirstChildOfClass("Humanoid")
+	if jump == false then
+		hum.JumpPower = 100
+		jumpBtn.Text = "Jump ON"
+		jump = true
+	else
+		hum.JumpPower = 50
+		jumpBtn.Text = "Jump OFF"
+		jump = false
+	end
+end)
