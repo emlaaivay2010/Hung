@@ -1,0 +1,10 @@
+-- X2 Damage All Garou Skills
+local multiplier = 2
+
+for _,v in pairs(getgc(true)) do
+    if type(v) == "table" and rawget(v,"Damage") then
+        v.Damage = v.Damage * multiplier
+    end
+end
+
+print("Đã bật X2 Damage cho Garou")
