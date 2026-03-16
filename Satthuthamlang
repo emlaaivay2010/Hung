@@ -1,0 +1,72 @@
+-- HUNG HUB Silent Assassin
+
+local player = game.Players.LocalPlayer
+local rs = game:GetService("RunService")
+
+-- GUI
+local gui = Instance.new("ScreenGui", game.CoreGui)
+gui.Name = "HungHub"
+
+local frame = Instance.new("Frame", gui)
+frame.Size = UDim2.new(0,200,0,160)
+frame.Position = UDim2.new(0.5,-100,0.5,-80)
+frame.BackgroundColor3 = Color3.fromRGB(25,25,25)
+
+local layout = Instance.new("UIListLayout", frame)
+
+-- Kill Aura
+local killAura = false
+local btn1 = Instance.new("TextButton", frame)
+btn1.Size = UDim2.new(1,0,0,40)
+btn1.Text = "Kill Aura : OFF"
+
+btn1.MouseButton1Click:Connect(function()
+    killAura = not killAura
+    btn1.Text = "Kill Aura : "..(killAura and "ON" or "OFF")
+end)
+
+-- ESP
+local esp = false
+local btn2 = Instance.new("TextButton", frame)
+btn2.Size = UDim2.new(1,0,0,40)
+btn2.Text = "ESP : OFF"
+
+btn2.MouseButton1Click:Connect(function()
+    esp = not esp
+    btn2.Text = "ESP : "..(esp and "ON" or "OFF")
+
+    if esp then
+        for _,v in pairs(game.Players:GetPlayers()) do
+            if v ~= player and v.Character then
+                local box = Instance.new("Highlight", v.Character)
+                box.FillColor = Color3.fromRGB(255,0,0)
+            end
+        end
+    end
+end)
+
+-- Auto Win
+local autoWin = false
+local btn3 = Instance.new("TextButton", frame)
+btn3.Size = UDim2.new(1,0,0,40)
+btn3.Text = "Auto Win : OFF"
+
+btn3.MouseButton1Click:Connect(function()
+    autoWin = not autoWin
+    btn3.Text = "Auto Win : "..(autoWin and "ON" or "OFF")
+end)
+
+-- Logic Kill Aura
+rs.RenderStepped:Connect(function()
+    if killAura then
+        for _,v in pairs(game.Players:GetPlayers()) do
+            if v ~= player and v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
+                local dist = (v.Character.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude
+                if dist < 12 then
+                    firetouchinterest(player.Character.HumanoidRootPart,v.Character.HumanoidRootPart,0)
+                    firetouchinterest(player.Character.HumanoidRootPart,v.Character.HumanoidRootPart,1)
+                end
+            end
+        end
+    end
+end)
