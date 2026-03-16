@@ -1,0 +1,153 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/daucobonhi/Ui-Redz-V2/refs/heads/main/UiREDzV2.lua"))()
+
+local Window = MakeWindow({
+Hub = {
+Title = "Hưng Roblox V3",
+Animation = "Hưng Hub"
+},
+Key = {
+KeySystem = false,
+Title = "Hưng Hub Key",
+Description = "Hưng Hub Script",
+KeyLink = "",
+Keys = {"1234"},
+Notifi = {
+Notifications = true,
+CorrectKey = "Script Started!",
+Incorrectkey = "Wrong Key",
+CopyKeyLink = "Copied"
+}
+}
+})
+
+MinimizeButton({
+Image = "http://www.roblox.com/asset/?id=83190276951914",
+Size = {60,60},
+Color = Color3.fromRGB(20,20,20),
+Corner = true,
+Stroke = true,
+StrokeColor = Color3.fromRGB(255,0,0)
+})
+
+-- TAB
+local Tab1 = MakeTab({Name = "📜 Script Tổng Hợp"})
+local Tab2 = MakeTab({Name = "🎣 Titan Fishing"})
+local Tab3 = MakeTab({Name = "🥊 TSB"})
+local Tab4 = MakeTab({Name = "🕊 Fly"})
+local Tab5 = MakeTab({Name = "⚙ Hoạt Động"})
+local Tab6 = MakeTab({Name = "ℹ Info"})
+
+-- TAB 1
+AddButton(Tab1,{
+Name = "Redz Hub (Blox Fruits)",
+Callback = function()
+local Settings = {JoinTeam = "Pirates", Translator = true}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))()(Settings)
+end
+})
+
+AddButton(Tab1,{
+Name = "Cokka Hub",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/UserDevEthical/Loadstring/main/CokkaHub.lua"))()
+end
+})
+
+-- TAB 2
+AddButton(Tab2,{
+Name = "Titan Fishing",
+Callback = function()
+loadstring(game:HttpGet("https://vss.pandadevelopment.net/virtual/file/dd6e6febf7054d7b"))()
+end
+})
+
+AddButton(Tab2,{
+Name = "Titan Fishing V2",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/LuvHub-Script/LuvHub/main/main/TitanFishing"))()
+end
+})
+
+AddButton(Tab2,{
+Name = "Titan Fishing V3",
+Callback = function()
+loadstring(game:HttpGet("https://vss.pandadevelopment.net/virtual/file/dd6e6febf7054d7b"))()
+end
+})
+
+-- TAB 3
+AddButton(Tab3,{
+Name = "ThanhDuy Hub (TSB)",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ngoclinh02042011-stack/ThanhDuy-Premium-NoKey/refs/heads/main/ThanhDuy%20NoKey.lua"))()
+end
+})
+
+-- TAB 4
+AddButton(Tab4,{
+Name = "Fly GUI",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+end
+})
+
+-- TAB 5
+AddToggle(Tab5,{
+Name = "⚡ Speed x2",
+Default = false,
+Callback = function(Value)
+local plr = game.Players.LocalPlayer
+if plr.Character and plr.Character:FindFirstChild("Humanoid") then
+plr.Character.Humanoid.WalkSpeed = Value and 32 or 16
+end
+end
+})
+
+AddToggle(Tab5,{
+Name = "🦘 Infinite Jump",
+Default = false,
+Callback = function(Value)
+_G.InfiniteJump = Value
+end
+})
+
+game:GetService("UserInputService").JumpRequest:Connect(function()
+if _G.InfiniteJump then
+local h = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+if h then
+h:ChangeState("Jumping")
+end
+end
+end)
+
+AddButton(Tab5,{
+Name = "🚶 Reset Speed",
+Callback = function()
+local plr = game.Players.LocalPlayer
+if plr.Character and plr.Character:FindFirstChild("Humanoid") then
+plr.Character.Humanoid.WalkSpeed = 16
+end
+end
+})
+
+-- INFO
+AddParagraph(Tab6,{
+Title = "Hưng Hub V3",
+Content = "Script Hub By Hưng\nHoạt động Mobile & PC\nGUI Redz V2"
+})
+
+AddButton(Tab6,{
+Name = "Rejoin Server",
+Callback = function()
+game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+end
+})
+
+AddButton(Tab6,{
+Name = "Copy Discord",
+Callback = function()
+if setclipboard then
+setclipboard("https://discord.gg/")
+end
+end
+})
