@@ -1,0 +1,116 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/daucobonhi/Ui-Redz-V2/refs/heads/main/UiREDzV2.lua"))()
+
+local Window = MakeWindow({
+Hub = {
+Title = "Hưng Roblox V2",
+Animation = "Hưng Hub"
+},
+Key = {
+KeySystem = false,
+Title = "Key System",
+Description = "Hưng Hub Script",
+KeyLink = "",
+Keys = {"1234"},
+Notifi = {
+Notifications = true,
+CorrectKey = "Script Started!",
+Incorrectkey = "Wrong Key",
+CopyKeyLink = "Copied"
+}
+}
+})
+
+MinimizeButton({
+Image = "http://www.roblox.com/asset/?id=83190276951914",
+Size = {60,60},
+Color = Color3.fromRGB(20,20,20),
+Corner = true,
+Stroke = true,
+StrokeColor = Color3.fromRGB(255,0,0)
+})
+
+-- TAB
+local Tab1 = MakeTab({Name = "📜 Script Tổng Hợp"})
+local Tab2 = MakeTab({Name = "🌙 99 Nights"})
+local Tab3 = MakeTab({Name = "🥊 TSB"})
+local Tab4 = MakeTab({Name = "🕊 Fly"})
+local Tab5 = MakeTab({Name = "⚙ Hoạt Động"})
+local Tab6 = MakeTab({Name = "ℹ Info"})
+
+-- SCRIPT TAB 1
+AddButton(Tab1,{
+Name = "Redz Hub (Blox Fruits)",
+Callback = function()
+local Settings = {
+JoinTeam = "Pirates",
+Translator = true
+}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))()(Settings)
+end
+})
+
+AddButton(Tab1,{
+Name = "Cokka Hub",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/UserDevEthical/Loadstring/main/CokkaHub.lua"))()
+end
+})
+
+-- TAB 3 TSB
+AddButton(Tab3,{
+Name = "ThanhDuy Hub",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ngoclinh02042011-stack/ThanhDuy-Premium-NoKey/refs/heads/main/ThanhDuy%20NoKey.lua"))()
+end
+})
+
+-- TAB 2
+AddButton(Tab2,{
+Name = "Titan Fishing",
+Callback = function()
+loadstring(game:HttpGet("https://vss.pandadevelopment.net/virtual/file/dd6e6febf7054d7b"))()
+end
+})
+
+AddButton(Tab2,{
+Name = "Titan Fishing V2",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/LuvHub-Script/LuvHub/main/main/TitanFishing"))()
+end
+})
+
+-- TAB 4 FLY
+AddButton(Tab4,{
+Name = "Fly GUI",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+end
+})
+
+-- TAB 5
+AddButton(Tab5,{
+Name = "Emote GUI",
+Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/7yd7/Hub/refs/heads/Branch/GUIS/Emotes.lua"))()
+end
+})
+
+-- TAB INFO
+AddParagraph(Tab6,{
+Title = "Hưng Hub V2",
+Content = "Script Hub By Hưng\nHoạt động trên Mobile & PC\nGUI Redz V2"
+})
+
+AddButton(Tab6,{
+Name = "Rejoin Server",
+Callback = function()
+game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+end
+})
+
+AddButton(Tab6,{
+Name = "Copy Discord",
+Callback = function()
+setclipboard("https://discord.gg/")
+end
+})
