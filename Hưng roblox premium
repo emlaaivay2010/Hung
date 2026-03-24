@@ -1,0 +1,318 @@
+repeat wait() until game:IsLoaded()
+
+-- INTRO LOGO
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+
+ScreenGui.Parent = game.CoreGui
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(10,10,10)
+Frame.Size = UDim2.new(1,0,1,0)
+
+TextLabel.Parent = Frame
+TextLabel.Size = UDim2.new(1,0,1,0)
+TextLabel.Text = "⚡ Hưng Roblox Prime"
+TextLabel.TextScaled = true
+TextLabel.TextColor3 = Color3.fromRGB(0,255,200)
+TextLabel.BackgroundTransparency = 1
+TextLabel.Font = Enum.Font.GothamBold
+
+wait(2)
+
+ScreenGui:Destroy()
+
+-- LOAD UI
+
+loadstring(game:HttpGet(
+"https://raw.githubusercontent.com/daucobonhi/Ui-Redz-V2/refs/heads/main/UiREDzV2.lua"
+))()
+
+local Window = MakeWindow({
+
+Hub = {
+Title = "⚡ Hưng Roblox Prime",
+Animation = "Premium Script Loader | No Key Version"
+},
+
+Key = {
+KeySystem = false,
+Title = "",
+Description = "",
+KeyLink = "",
+Keys = {},
+
+Notifi = {
+Notifications = true,
+CorrectKey = "🚀 Hub đang khởi động...",
+Incorrectkey = "",
+CopyKeyLink = ""
+}
+}
+
+})
+
+MinimizeButton({
+
+Image = "http://www.roblox.com/asset/?id=10734943674",
+
+Size = {60,60},
+
+Color = Color3.fromRGB(15,15,15),
+
+Corner = true,
+
+Stroke = true,
+
+StrokeColor = Color3.fromRGB(0,255,200)
+
+})
+
+--------------------------------------------------
+-- TAB SYSTEM
+
+local Tab1o = MakeTab({Name = "🌾 Farm Script"})
+local Tab2o = MakeTab({Name = "🎣 Titan Fishing"})
+local Tab3o = MakeTab({Name = "⚔️ TSB Script"})
+local Tab4o = MakeTab({Name = "✨ Emote GUI"})
+local Tab5o = MakeTab({Name = "📦 Tổng Hợp"})
+local Tab6o = MakeTab({Name = "🦘 Auto Jump"})
+local Tab7o = MakeTab({Name = "🏴 Sailor Piece"})
+
+--------------------------------------------------
+-- FARM
+
+AddButton(Tab1o,{
+Name="🔥 Redz Hub Auto Farm",
+Callback=function()
+
+Notify({
+Title="Hưng Prime Hub",
+Description="Đang chạy Redz Hub...",
+Time=3
+})
+
+local Settings={
+JoinTeam="Pirates",
+Translator=true
+}
+
+loadstring(game:HttpGet(
+"https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"
+))(Settings)
+
+end
+})
+
+AddButton(Tab1o,{
+Name="⚡ CokkaHub",
+Callback=function()
+
+Notify({
+Title="Hưng Prime Hub",
+Description="Đang chạy CokkaHub...",
+Time=3
+})
+
+loadstring(game:HttpGet(
+"https://raw.githubusercontent.com/UserDevEthical/Loadstring/main/CokkaHub.lua"
+))()
+
+end
+})
+
+--------------------------------------------------
+-- TITAN FISHING
+
+AddButton(Tab2o,{
+Name="🎣 Titan Fishing 1",
+Callback=function()
+
+Notify({
+Title="Hưng Prime Hub",
+Description="Loading Titan Fishing 1",
+Time=3
+})
+
+loadstring(game:HttpGet(
+"https://vss.pandadevelopment.net/virtual/file/dd6e6febf7054d7b"
+))()
+
+end
+})
+
+AddButton(Tab2o,{
+Name="🎣 Titan Fishing 2",
+Callback=function()
+
+Notify({
+Title="Hưng Prime Hub",
+Description="Loading Titan Fishing 2",
+Time=3
+})
+
+_G.LID=(_G.LID or 0)+1
+
+local success,script=pcall(game.HttpGet,game,
+"https://gist.githubusercontent.com/huynhphuoctrong10-dot/6381092d7447f3d8470ebc6bd1335d15/raw/lemon"
+)
+
+if success then
+loadstring("local CID=".._G.LID.."\n"..script)()
+end
+
+end
+})
+
+AddButton(Tab2o,{
+Name="🎣 Titan Fishing 3",
+Callback=function()
+
+Notify({
+Title="Hưng Prime Hub",
+Description="Loading Titan Fishing 3",
+Time=3
+})
+
+loadstring(game:HttpGet(
+"https://gist.githubusercontent.com/huynhphuoctrong10-dot/6381092d7447f3d8470ebc6bd1335d15/raw/lemon?"..math.random(1,9999)
+))()
+
+end
+})
+
+--------------------------------------------------
+-- TSB
+
+AddButton(Tab3o,{
+Name="⚔️ ThanhDuy Hub",
+Callback=function()
+
+Notify({
+Title="Hưng Prime Hub",
+Description="Loading ThanhDuy Hub",
+Time=3
+})
+
+loadstring(game:HttpGet(
+"https://raw.githubusercontent.com/ngoclinh02042011-stack/ThanhDuy-Premium-NoKey/refs/heads/main/ThanhDuy%20NoKey.lua"
+))()
+
+end
+})
+
+--------------------------------------------------
+-- EMOTE
+
+AddButton(Tab4o,{
+Name="✨ Emote GUI",
+Callback=function()
+
+Notify({
+Title="Hưng Prime Hub",
+Description="Loading Emote GUI",
+Time=3
+})
+
+loadstring(game:HttpGet(
+"https://raw.githubusercontent.com/7yd7/Hub/refs/heads/Branch/GUIS/Emotes.lua"
+))()
+
+end
+})
+
+--------------------------------------------------
+-- TỔNG HỢP
+
+AddButton(Tab5o,{
+Name="📦 ThaiAn Hub",
+Callback=function()
+
+Notify({
+Title="Hưng Prime Hub",
+Description="Loading ThaiAn Hub",
+Time=3
+})
+
+loadstring(game:HttpGet(
+"https://raw.githubusercontent.com/ThaiAn641/ThaiAnSitink/refs/heads/main/ThaiAnHub.lua"
+))()
+
+end
+})
+
+AddButton(Tab5o,{
+Name="📦 Script Tổng Hợp",
+Callback=function()
+
+Notify({
+Title="Hưng Prime Hub",
+Description="Loading Script Tổng Hợp",
+Time=3
+})
+
+loadstring(game:HttpGet(
+"https://raw.githubusercontent.com/AnhDzaiScript/TuanAnhIOSNew/refs/heads/main/TuanAnhIOS-TongHop.Lua"
+))()
+
+end
+})
+
+--------------------------------------------------
+-- AUTO JUMP
+
+AddButton(Tab6o,{
+Name="🦘 Auto Jump",
+Callback=function()
+
+Notify({
+Title="Hưng Prime Hub",
+Description="Auto Jump bật",
+Time=3
+})
+
+loadstring(game:HttpGet(
+"https://raw.githubusercontent.com/nguyenphuc888999666-code/Auto-jump-Ph-c/main/Auto%20jump"
+))()
+
+end
+})
+
+--------------------------------------------------
+-- SAILOR PIECE
+
+AddButton(Tab7o,{
+Name="🏴 Sailor Piece Hub",
+Callback=function()
+
+Notify({
+Title="Hưng Prime Hub",
+Description="Loading Sailor Piece Hub",
+Time=3
+})
+
+loadstring(game:HttpGet(
+"https://raw.githubusercontent.com/LOLking123456/SailorPiece/main/Script.lua"
+))()
+
+end
+})
+
+AddButton(Tab7o,{
+Name="🏴 Sailor Piece No Key",
+Callback=function()
+
+Notify({
+Title="Hưng Prime Hub",
+Description="Loading Sailor Piece No Key",
+Time=3
+})
+
+loadstring(game:HttpGet(
+"https://raw.githubusercontent.com/Bliqe/Upload/refs/heads/main/Games/SP/Express.lua"
+))()
+
+end
+})
