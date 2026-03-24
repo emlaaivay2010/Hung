@@ -1,0 +1,160 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/daucobonhi/Ui-Redz-V2/refs/heads/main/UiREDzV2.lua"))()
+
+local Window = MakeWindow({
+    Hub = {
+        Title = "Hưng roblox premium",
+        Animation = "nhóm Roblox prime"
+    },
+    Key = {
+        KeySystem = false,
+        Title = "Key System",
+        Description = "",
+        KeyLink = "",
+        Keys = {"1234"},
+        Notifi = {
+            Notifications = true,
+            CorrectKey = "Running the Script...",
+            Incorrectkey = "The key is incorrect",
+            CopyKeyLink = "Copied to Clipboard"
+        }
+    }
+})
+
+MinimizeButton({
+    Image = "http://www.roblox.com/asset/?id=83190276951914",
+    Size = {60,60},
+    Color = Color3.fromRGB(10,10,10),
+    Corner = true,
+    Stroke = false,
+    StrokeColor = Color3.fromRGB(255,0,0)
+})
+
+-- TAB
+local Tab1o = MakeTab({Name="Script Farm"})
+local Tab2o = MakeTab({Name="Script titan fishing"})
+local Tab3o = MakeTab({Name="Script TSB"})
+local Tab4o = MakeTab({Name="Script hoạt động"})
+local Tab5o = MakeTab({Name="Script Sailor piece"})
+local Tab6o = MakeTab({Name="Script auto jump"})
+local Tab7o = MakeTab({Name="Script tổng hợp"})
+
+-- FUNCTION LOADSCRIPT ANTI ERROR
+local function LoadScript(url)
+    local success, result = pcall(function()
+        return game:HttpGet(url)
+    end)
+
+    if success then
+        loadstring(result)()
+    else
+        warn("Không load được script:", url)
+    end
+end
+
+-- TAB 1
+AddButton(Tab1o,{
+    Name="Redz Hub",
+    Callback=function()
+        local Settings={
+            JoinTeam="Pirates",
+            Translator=true
+        }
+
+        local success, script = pcall(game.HttpGet, game,
+        "https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua")
+
+        if success then
+            loadstring(script)(Settings)
+        end
+    end
+})
+
+AddButton(Tab1o,{
+    Name="CokkaHub",
+    Callback=function()
+        LoadScript("https://raw.githubusercontent.com/UserDevEthical/Loadstring/main/CokkaHub.lua")
+    end
+})
+
+-- TAB 7
+AddButton(Tab7o,{
+    Name="Tổng hợp thêm",
+    Callback=function()
+        LoadScript("https://raw.githubusercontent.com/ThaiAn641/ThaiAnSitink/refs/heads/main/ThaiAnHub.lua")
+    end
+})
+
+-- TAB 3
+AddButton(Tab3o,{
+    Name="ThanhDuy Hub",
+    Callback=function()
+        LoadScript("https://raw.githubusercontent.com/ngoclinh02042011-stack/ThanhDuy-Premium-NoKey/refs/heads/main/ThanhDuy%20NoKey.lua")
+    end
+})
+
+-- TAB 2
+AddButton(Tab2o,{
+    Name="Titan Fishing",
+    Callback=function()
+        LoadScript("https://vss.pandadevelopment.net/virtual/file/dd6e6febf7054d7b")
+    end
+})
+
+AddButton(Tab2o,{
+    Name="Titan Fishing 2",
+    Callback=function()
+
+        _G.LID = (_G.LID or 0) + 1
+
+        local success, script = pcall(game.HttpGet, game,
+        "https://gist.githubusercontent.com/huynhphuoctrong10-dot/6381092d7447f3d8470ebc6bd1335d15/raw/lemon")
+
+        if success then
+            loadstring("local CID=".._G.LID.."\n"..script)()
+        end
+
+    end
+})
+
+AddButton(Tab2o,{
+    Name="Titan Fishing 3",
+    Callback=function()
+        LoadScript("https://gist.githubusercontent.com/huynhphuoctrong10-dot/6381092d7447f3d8470ebc6bd1335d15/raw/lemon?"..math.random(1,9999))
+    end
+})
+
+-- TAB 4
+AddButton(Tab4o,{
+    Name="Emote GUI",
+    Callback=function()
+        LoadScript("https://raw.githubusercontent.com/7yd7/Hub/refs/heads/Branch/GUIS/Emotes.lua")
+    end
+})
+
+-- TAB 5
+AddButton(Tab5o,{
+    Name="Sailor Piece",
+    Callback=function()
+
+        local Settings={
+            JoinTeam="Pirates",
+            Translator=true
+        }
+
+        local success, script = pcall(game.HttpGet, game,
+        "https://raw.githubusercontent.com/Bliqe/Upload/refs/heads/main/Games/SP/Express.lua")
+
+        if success then
+            loadstring(script)(Settings)
+        end
+
+    end
+})
+
+-- TAB 6
+AddButton(Tab6o,{
+    Name="Auto Jump",
+    Callback=function()
+        LoadScript("https://raw.githubusercontent.com/nguyenphuc888999666-code/Auto-jump-Ph-c/main/Auto%20jump")
+    end
+})
