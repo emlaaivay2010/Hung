@@ -1,0 +1,195 @@
+-- LOAD UI
+loadstring(game:HttpGet("https://raw.githubusercontent.com/daucobonhi/Ui-Redz-V2/refs/heads/main/UiREDzV2.lua"))()
+
+-- WINDOW
+local Window = MakeWindow({
+    Hub = {
+        Title = "Hưng roblox quản trị viên",
+        Animation = "daogiahung"
+    },
+    Key = {
+        KeySystem = false,
+        Title = "Key System",
+        Keys = {"1234"},
+        Notifi = {
+            Notifications = true,
+            CorrectKey = "Running the Script...",
+            Incorrectkey = "The key is incorrect"
+        }
+    }
+})
+
+-- NÚT THU NHỎ
+MinimizeButton({
+    Image = "http://www.roblox.com/asset/?id=83190276951914",
+    Size = {60,60},
+    Color = Color3.fromRGB(10,10,10),
+    Corner = true
+})
+
+-- FUNCTION LOADSCRIPT
+local function LoadScript(url)
+    local ok, data = pcall(function()
+        return game:HttpGet(url)
+    end)
+
+    if ok and data then
+        loadstring(data)()
+    else
+        warn("Lỗi load:", url)
+    end
+end
+
+-- TABS
+local TabFarm = MakeTab({Name="Farm"})
+local TabFish = MakeTab({Name="Fishing"})
+local TabTSB = MakeTab({Name="TSB"})
+local TabMisc = MakeTab({Name="Hoạt động"})
+local TabSailor = MakeTab({Name="Sailor"})
+local TabFun = MakeTab({Name="Fun"})
+local TabHub = MakeTab({Name="Tổng hợp"})
+local TabMusic = MakeTab({Name="Nhạc"})
+local TabGame = MakeTab({Name="Game"})
+local TabPet = MakeTab({Name="Pet"})
+local TabESP = MakeTab({Name="ESP"})
+
+--------------------------------------------------
+-- FARM
+AddButton(TabFarm,{
+    Name="Redz Hub",
+    Callback=function()
+        local ok, script = pcall(function()
+            return game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua")
+        end)
+
+        if ok then
+            loadstring(script)({JoinTeam="Pirates", Translator=true})
+        end
+    end
+})
+
+AddButton(TabFarm,{
+    Name="CokkaHub",
+    Callback=function()
+        LoadScript("https://raw.githubusercontent.com/UserDevEthical/Loadstring/main/CokkaHub.lua")
+    end
+})
+
+--------------------------------------------------
+-- FISHING
+AddButton(TabFish,{
+    Name="Titan Fishing",
+    Callback=function()
+        LoadScript("https://vss.pandadevelopment.net/virtual/file/dd6e6febf7054d7b")
+    end
+})
+
+--------------------------------------------------
+-- TSB
+AddButton(TabTSB,{
+    Name="ThanhDuy Hub",
+    Callback=function()
+        LoadScript("https://raw.githubusercontent.com/ngoclinh02042011-stack/ThanhDuy-Premium-NoKey/refs/heads/main/ThanhDuy%20NoKey.lua")
+    end
+})
+
+--------------------------------------------------
+-- MISC
+AddButton(TabMisc,{
+    Name="Emote GUI",
+    Callback=function()
+        LoadScript("https://raw.githubusercontent.com/7yd7/Hub/refs/heads/Branch/GUIS/Emotes.lua")
+    end
+})
+
+--------------------------------------------------
+-- SAILOR
+AddButton(TabSailor,{
+    Name="Sailor Piece",
+    Callback=function()
+        local ok, script = pcall(function()
+            return game:HttpGet("https://raw.githubusercontent.com/Bliqe/Upload/refs/heads/main/Games/SP/Express.lua")
+        end)
+
+        if ok then
+            loadstring(script)({JoinTeam="Pirates", Translator=true})
+        end
+    end
+})
+
+--------------------------------------------------
+-- FUN
+AddButton(TabFun,{
+    Name="Auto Jump",
+    Callback=function()
+        LoadScript("https://raw.githubusercontent.com/nguyenphuc888999666-code/Auto-jump-Ph-c/main/Auto%20jump")
+    end
+})
+
+AddButton(TabFun,{
+    Name="Piano",
+    Callback=function()
+        LoadScript("https://hellohellohell0.com/talentless-raw/TALENTLESS.lua")
+    end
+})
+
+--------------------------------------------------
+-- HUB
+AddButton(TabHub,{
+    Name="Tổng hợp",
+    Callback=function()
+        LoadScript("https://raw.githubusercontent.com/ThaiAn641/ThaiAnSitink/refs/heads/main/ThaiAnHub.lua")
+    end
+})
+
+--------------------------------------------------
+-- NHẠC
+AddButton(TabMusic,{
+    Name="YouTube Music",
+    Callback=function()
+        LoadScript("https://rawscripts.net/raw/Universal-Script-YouTube-Music-Player-72222")
+    end
+})
+
+--------------------------------------------------
+-- GAME
+AddButton(TabGame,{
+    Name="Evade",
+    Callback=function()
+        LoadScript("https://raw.githubusercontent.com/sccv8/WhakizashiX/refs/heads/main/old%20whakizashi.txt")
+    end
+})
+
+--------------------------------------------------
+-- PET
+AddButton(TabPet,{
+    Name="Auto Pet",
+    Callback=function()
+        LoadScript("https://raw.githubusercontent.com/XeccScript/AutoMiddle/refs/heads/main/AutoMiddlePets.txt")
+    end
+})
+
+--------------------------------------------------
+-- ESP (NHẸ)
+AddButton(TabESP,{
+    Name="Bật ESP",
+    Callback=function()
+        local players = game:GetService("Players")
+        local plr = players.LocalPlayer
+
+        while task.wait(1) do
+            for _, v in pairs(players:GetPlayers()) do
+                if v ~= plr and v.Character then
+                    if not v.Character:FindFirstChild("ESP") then
+                        local h = Instance.new("Highlight")
+                        h.Name = "ESP"
+                        h.FillColor = Color3.fromRGB(255,0,0)
+                        h.OutlineColor = Color3.fromRGB(255,255,255)
+                        h.Adornee = v.Character
+                        h.Parent = v.Character
+                    end
+                end
+            end
+        end
+    end
+})
